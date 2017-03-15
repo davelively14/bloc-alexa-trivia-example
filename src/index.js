@@ -84,9 +84,8 @@ var languageString = {
 };
 
 var Alexa = require("alexa-sdk");
-var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 
-exports.handler = function(event, context, callback) {
+exports.handler = function(event, context, _callback) {
     var alexa = Alexa.handler(event, context);
     alexa.appId = APP_ID;
     // To enable string internationalization (i18n) features, set a resources object.
@@ -260,7 +259,7 @@ function handleUserGuess(userGaveUp) {
         speechOutput = userGaveUp ? "" : this.t("ANSWER_IS_MESSAGE");
         speechOutput += speechOutputAnalysis + this.t("GAME_OVER_MESSAGE", currentScore.toString(), GAME_LENGTH.toString());
 
-        this.emit(":tell", speechOutput)
+        this.emit(":tell", speechOutput);
     } else {
         currentQuestionIndex += 1;
         correctAnswerIndex = Math.floor(Math.random() * (ANSWER_COUNT));
@@ -270,7 +269,7 @@ function handleUserGuess(userGaveUp) {
         var repromptText = this.t("TELL_QUESTION_MESSAGE", questionIndexForSpeech.toString(), spokenQuestion);
 
         for (var i = 0; i < ANSWER_COUNT; i++) {
-            repromptText += (i+1).toString() + ". " + roundAnswers[i] + ". "
+            repromptText += (i+1).toString() + ". " + roundAnswers[i] + ". ";
         }
 
         speechOutput += userGaveUp ? "" : this.t("ANSWER_IS_MESSAGE");
