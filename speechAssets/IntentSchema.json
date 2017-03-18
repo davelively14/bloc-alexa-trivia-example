@@ -1,4 +1,5 @@
-{"intents": [
+{
+  "intents": [
     {"intent": "AnswerIntent", "slots": [{"name": "Answer", "type": "AMAZON.NUMBER"}]},
     {"intent": "DontKnowIntent"},
     {"intent": "AMAZON.StartOverIntent"},
